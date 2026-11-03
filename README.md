@@ -17,6 +17,7 @@
   <a href="#-how-it-works">How It Works</a> •
   <a href="#-architecture">Architecture</a> •
   <a href="#-project-structure">Structure</a> •
+  <a href="#-automated-unit-testing">Unit Tests</a> •
   <a href="#-getting-started">Getting Started</a> •
   <a href="#-tech-stack">Tech Stack</a>
 </p>
@@ -147,6 +148,7 @@ The project follows a clean **object-oriented design** with single-responsibilit
 | **Market** | `StockMarket` | Stock catalog, price simulation, display |
 | **Persistence** | `DataManager` | File-based save/load per user |
 | **Export** | `CsvExporter` | CSV transaction export |
+| **Testing** | `TestRunner`, `*Test` | 17 automated unit tests across core domain |
 | **UI Utility** | `Colors` | ANSI color codes for terminal output |
 
 ---
@@ -155,22 +157,29 @@ The project follows a clean **object-oriented design** with single-responsibilit
 
 ```
 StockTradingPlatform/
-├── Main.java               ── Entry point: menu loop, buy/sell/performance handlers
-├── AuthManager.java        ── Login & registration with hashed passwords
+├── Main.java               ── Entry point: interactive menu, buy/sell & performance
+├── AuthManager.java        ── Login & registration with credential hashing
 ├── User.java               ── Balance, portfolio, transactions, trade execution
-├── Stock.java              ── Symbol, price, price history (last 6), ASCII chart
+├── Stock.java              ── Symbol, price, rolling buffer (last 6), ASCII chart
 ├── StockMarket.java        ── Market catalog, price simulation, display
-├── Portfolio.java          ── Holdings map, average buy price, P&L calculations
+├── Portfolio.java          ── Holdings map, weighted avg price, P&L calculations
 ├── Transaction.java        ── Trade record with CSV and colored display support
 ├── DataManager.java        ── File-based persistence (per-user .txt files)
 ├── CsvExporter.java        ── Exports transaction history to CSV
 ├── Colors.java             ── ANSI color constants and P&L color helpers
-└── data/
-    ├── users.txt                         ── username:hashedPassword registry
-    ├── <username>_account.txt            ── balance + realized P&L
-    ├── <username>_portfolio.txt          ── holdings per stock
-    ├── <username>_transactions.txt       ── full trade log
-    └── transactions_<user>_<ts>.csv      ── exported CSV files
+├── TestRunner.java         ── Automated test runner with colored terminal reports
+├── StockTest.java          ── Unit tests for Stock domain logic & price buffer
+├── PortfolioTest.java      ── Unit tests for weighted buy pricing & liquidations
+├── UserTest.java           ── Unit tests for cash balance, guardrails & trade logging
+├── TransactionTest.java    ── Unit tests for trade record data & CSV serialization
+├── assets/                 ── Terminal UI visual screenshots (SVGs)
+└── data/                   ── Runtime storage (per-user state, git-ignored)
+    ├── .gitkeep                          ── Directory tracking
+    ├── users.txt                         ── User credentials registry
+    ├── <username>_account.txt            ── Account balance & realized P&L
+    ├── <username>_portfolio.txt          ── Holdings per stock
+    ├── <username>_transactions.txt       ── Complete transaction history
+    └── transactions_<user>_<ts>.csv      ── Exported CSV files
 ```
 
 ---
@@ -189,6 +198,37 @@ User
 
 StockMarket
  └── Map<symbol → Stock(symbol, companyName, price, priceHistory[6])>
+```
+
+---
+
+## 🧪 Automated Unit Testing
+
+The repository includes a self-contained unit test suite covering domain calculations, edge cases, financial guardrails, and CSV serialization.
+
+### Test Coverage Highlights
+
+| Test Suite | Scenarios Verified |
+|:-----------|:-------------------|
+| **`StockTest`** | Initial property state, percentage change calculation (+10% / -10%), rolling price buffer (FIFO max 6 items), rejection of negative price updates |
+| **`PortfolioTest`** | Single buy order, weighted average buy price calculation across multi-lot purchases, partial sales, complete liquidation (entry removal), over-selling prevention, unrealized P/L calculation |
+| **`UserTest`** | Initial balance verification, cash deduction on purchases, insufficient funds guardrail (zero balance leak), sale proceeds allocation, realized P/L tracking, transaction log integrity, unowned stock sale prevention |
+| **`TransactionTest`** | Total trade amount computation, standard CSV serialization format (`Type,Stock,Quantity,Price,Total Amount,P/L,Date & Time`) |
+
+<p align="center">
+  <img src="assets/test_runner.svg" alt="Automated Unit Test Runner Output" width="780" />
+</p>
+
+### Running the Tests
+
+Tests compile and execute directly with standard Java — **no external test runners, dependencies, or network connections required**:
+
+```bash
+# Compile all source and test classes
+javac *.java
+
+# Run all unit tests
+java TestRunner
 ```
 
 ---
