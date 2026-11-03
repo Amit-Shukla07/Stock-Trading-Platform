@@ -53,3 +53,4 @@ public class StockTest {
         TestRunner.pass("testNegativePriceRejected");
     }
 }
+
