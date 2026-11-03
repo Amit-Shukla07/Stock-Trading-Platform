@@ -12,6 +12,7 @@
 </p>
 
 <p align="center">
+  <a href="#-visual-walkthrough">Visuals</a> •
   <a href="#-features">Features</a> •
   <a href="#-how-it-works">How It Works</a> •
   <a href="#-architecture">Architecture</a> •
@@ -50,6 +51,45 @@ All data is persisted to plain text files per user — **no database, no web ser
 | 🎨 **Colored Output** | ANSI color coding — green for gains, red for losses, yellow for neutrals |
 | 💾 **Persistent Storage** | Per-user `.txt` files save account, portfolio, and transaction history |
 | 👥 **Multi-user Support** | Multiple accounts, each with independent save files |
+
+---
+
+## 📸 Visual Walkthrough
+
+### 1. 🔐 User Authentication & Main Dashboard
+Secure user login and account registration with session recovery and interactive dashboard menu.
+
+<p align="center">
+  <img src="assets/auth_menu.svg" alt="Authentication & Main Dashboard" width="780" />
+</p>
+
+### 2. 📊 Live Market Data & ASCII Price History Chart
+Real-time stock catalog with simulated price movements (▲ / ▼ percentage shifts) and interactive mini ASCII trend charts.
+
+<p align="center">
+  <img src="assets/market_chart.svg" alt="Market Data & Price Chart" width="780" />
+</p>
+
+### 3. 🛒 Order Execution with Guardrails & Validation
+Buy and sell order processing featuring automated order summaries, balance checks, share ownership validation, real-time P/L estimation, and explicit confirmation prompts.
+
+<p align="center">
+  <img src="assets/buy_sell.svg" alt="Buy & Sell Order Execution" width="780" />
+</p>
+
+### 4. 💼 Portfolio Tracking & Performance Metrics
+Weighted average buy price computation, per-asset profit & loss color coding, and overarching performance metrics (Unrealized P/L, Realized P/L, Total Return %).
+
+<p align="center">
+  <img src="assets/portfolio_performance.svg" alt="Portfolio & Performance Dashboard" width="780" />
+</p>
+
+### 5. 📋 Transaction History Ledger & CSV Export
+Audit-ready transaction records with ANSI color highlights and one-click export to timestamped CSV files.
+
+<p align="center">
+  <img src="assets/transactions_csv.svg" alt="Transaction History & CSV Export" width="780" />
+</p>
 
 ---
 

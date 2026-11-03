@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 546" width="820" height="546">
+<defs>
+  <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#1e1e2e"/>
+    <stop offset="100%" stop-color="#181825"/>
+  </linearGradient>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.45"/>
+  </filter>
+</defs>
+<style>
+  .term-text { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13.5px; }
+  .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12.5px; fill: #a6adc8; font-weight: 500; }
+  .bold { font-weight: bold; }
+</style>
+<rect x="10" y="8" width="800" height="526" rx="10" ry="10" fill="url(#bgGrad)" stroke="#313244" stroke-width="1.2" filter="url(#shadow)"/>
+<rect x="10" y="8" width="800" height="42" rx="10" ry="10" fill="#181825"/>
+<rect x="10" y="40" width="800" height="10" fill="#181825"/>
+<line x1="10" y1="50" x2="810" y2="50" stroke="#313244" stroke-width="1"/>
+<circle cx="32" cy="28" r="6" fill="#ff5f56"/>
+<circle cx="52" cy="28" r="6" fill="#ffbd2e"/>
+<circle cx="72" cy="28" r="6" fill="#27c93f"/>
+<text x="410.0" y="32" text-anchor="middle" class="title">StockTradingPlatform — Live Market Catalog &amp; Price History Chart</text>
+<text x="32" y="76" xml:space="preserve"><tspan fill="#89dceb" class="term-text bold">┌──────────────────────────────────────────────────┐</tspan></text>
+<text x="32" y="96" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">│&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;📊&#160;&#160;LIVE&#160;MARKET&#160;DATA&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="116" xml:space="preserve"><tspan fill="#89dceb" class="term-text bold">└──────────────────────────────────────────────────┘</tspan></text>
+<text x="32" y="136" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;Symbol&#160;&#160;Company&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Price&#160;&#160;&#160;&#160;&#160;&#160;&#160;Change</tspan></text>
+<text x="32" y="156" xml:space="preserve"><tspan fill="#89dceb" class="term-text">&#160;&#160;────────────────────────────────────────────────────</tspan></text>
+<text x="32" y="176" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;MSFT&#160;&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">Microsoft&#160;Corp.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f1c40f" class="term-text bold">$&#160;&#160;&#160;506.69&#160;&#160;</tspan><tspan fill="#2bf075" class="term-text bold">▲&#160;+1.34%</tspan></text>
+<text x="32" y="196" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;NFLX&#160;&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">Netflix&#160;Inc.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f1c40f" class="term-text bold">$&#160;&#160;&#160;669.03&#160;&#160;</tspan><tspan fill="#ff5555" class="term-text bold">▼&#160;-4.42%</tspan></text>
+<text x="32" y="216" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;GOOGL&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">Alphabet&#160;Inc.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f1c40f" class="term-text bold">$&#160;&#160;&#160;239.74&#160;&#160;</tspan><tspan fill="#ff5555" class="term-text bold">▼&#160;-4.10%</tspan></text>
+<text x="32" y="236" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;META&#160;&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">Meta&#160;Platforms&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f1c40f" class="term-text bold">$&#160;&#160;&#160;570.37&#160;&#160;</tspan><tspan fill="#ff5555" class="term-text bold">▼&#160;-4.94%</tspan></text>
+<text x="32" y="256" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;AAPL&#160;&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">Apple&#160;Inc.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f1c40f" class="term-text bold">$&#160;&#160;&#160;218.99&#160;&#160;</tspan><tspan fill="#ff5555" class="term-text bold">▼&#160;-2.67%</tspan></text>
+<text x="32" y="276" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;TSLA&#160;&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">Tesla&#160;Inc.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f1c40f" class="term-text bold">$&#160;&#160;&#160;435.40&#160;&#160;</tspan><tspan fill="#ff5555" class="term-text bold">▼&#160;-3.24%</tspan></text>
+<text x="32" y="296" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;AMZN&#160;&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">Amazon.com&#160;Inc.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f1c40f" class="term-text bold">$&#160;&#160;&#160;227.79&#160;&#160;</tspan><tspan fill="#ff5555" class="term-text bold">▼&#160;-0.96%</tspan></text>
+<text x="32" y="316" xml:space="preserve"><tspan fill="#89dceb" class="term-text">&#160;&#160;────────────────────────────────────────────────────</tspan></text>
+<text x="32" y="336" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="356" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;Enter&#160;stock&#160;symbol&#160;(or&#160;ALL&#160;for&#160;all&#160;stocks):&#160;</tspan><tspan fill="#ffffff" class="term-text bold">MSFT</tspan></text>
+<text x="32" y="376" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="396" xml:space="preserve"><tspan fill="#04d9ff" class="term-text bold">&#160;&#160;Price&#160;History&#160;(MSFT):</tspan></text>
+<text x="32" y="416" xml:space="preserve"><tspan fill="#ff5555" class="term-text bold">&#160;&#160;█&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$500.00</tspan></text>
+<text x="32" y="436" xml:space="preserve"><tspan fill="#2bf075" class="term-text bold">&#160;&#160;████████████████████&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$506.69</tspan></text>
+<text x="32" y="456" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="476" xml:space="preserve"><tspan fill="#04d9ff" class="term-text bold">&#160;&#160;Price&#160;History&#160;(AAPL):</tspan></text>
+<text x="32" y="496" xml:space="preserve"><tspan fill="#2bf075" class="term-text bold">&#160;&#160;████████████████████&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$225.00</tspan></text>
+<text x="32" y="516" xml:space="preserve"><tspan fill="#ff5555" class="term-text bold">&#160;&#160;█&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$218.99</tspan></text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 846" width="820" height="846">
+<defs>
+  <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#1e1e2e"/>
+    <stop offset="100%" stop-color="#181825"/>
+  </linearGradient>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.45"/>
+  </filter>
+</defs>
+<style>
+  .term-text { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13.5px; }
+  .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12.5px; fill: #a6adc8; font-weight: 500; }
+  .bold { font-weight: bold; }
+</style>
+<rect x="10" y="8" width="800" height="826" rx="10" ry="10" fill="url(#bgGrad)" stroke="#313244" stroke-width="1.2" filter="url(#shadow)"/>
+<rect x="10" y="8" width="800" height="42" rx="10" ry="10" fill="#181825"/>
+<rect x="10" y="40" width="800" height="10" fill="#181825"/>
+<line x1="10" y1="50" x2="810" y2="50" stroke="#313244" stroke-width="1"/>
+<circle cx="32" cy="28" r="6" fill="#ff5f56"/>
+<circle cx="52" cy="28" r="6" fill="#ffbd2e"/>
+<circle cx="72" cy="28" r="6" fill="#27c93f"/>
+<text x="410.0" y="32" text-anchor="middle" class="title">StockTradingPlatform — Trade Execution (Buy &amp; Sell)</text>
+<text x="32" y="76" xml:space="preserve"><tspan fill="#2bf075" class="term-text bold">&#160;&#160;═══════════&#160;&#160;🛒&#160;&#160;BUY&#160;STOCK&#160;&#160;═══════════</tspan></text>
+<text x="32" y="96" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;Enter&#160;stock&#160;symbol:&#160;</tspan><tspan fill="#ffffff" class="term-text bold">AAPL</tspan></text>
+<text x="32" y="116" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;Current&#160;price&#160;of&#160;AAPL:&#160;</tspan><tspan fill="#f1c40f" class="term-text bold">$225.00</tspan></text>
+<text x="32" y="136" xml:space="preserve"><tspan fill="#89dceb" class="term-text">&#160;&#160;Your&#160;available&#160;balance:&#160;</tspan><tspan fill="#04d9ff" class="term-text bold">$100,000.00</tspan></text>
+<text x="32" y="156" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;Enter&#160;quantity&#160;to&#160;buy:&#160;</tspan><tspan fill="#ffffff" class="term-text bold">5</tspan></text>
+<text x="32" y="176" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="196" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;┌─────────────────────────────┐</tspan></text>
+<text x="32" y="216" xml:space="preserve"><tspan fill="#f1c40f" class="term-text bold">&#160;&#160;│&#160;&#160;Order&#160;Summary&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="236" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;Stock&#160;&#160;&#160;&#160;:&#160;AAPL&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="256" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;Qty&#160;&#160;&#160;&#160;&#160;&#160;:&#160;5&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="276" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;Price&#160;&#160;&#160;&#160;:&#160;$225.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="296" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;Total&#160;&#160;&#160;&#160;:&#160;$1,125.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="316" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;└─────────────────────────────┘</tspan></text>
+<text x="32" y="336" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;Confirm&#160;purchase?&#160;(y/n):&#160;</tspan><tspan fill="#ffffff" class="term-text bold">y</tspan></text>
+<text x="32" y="356" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="376" xml:space="preserve"><tspan fill="#2bf075" class="term-text bold">&#160;&#160;✔&#160;&#160;Purchase&#160;successful!</tspan></text>
+<text x="32" y="396" xml:space="preserve"><tspan fill="#a6e3a1" class="term-text">&#160;&#160;&#160;&#160;&#160;5&#160;share(s)&#160;of&#160;AAPL&#160;bought&#160;at&#160;$225.00</tspan></text>
+<text x="32" y="416" xml:space="preserve"><tspan fill="#f1c40f" class="term-text bold">&#160;&#160;&#160;&#160;&#160;New&#160;balance:&#160;$98,875.00</tspan></text>
+<text x="32" y="436" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="456" xml:space="preserve"><tspan fill="#ff5555" class="term-text bold">&#160;&#160;══════════════&#160;&#160;💰&#160;&#160;SELL&#160;STOCK&#160;&#160;══════════════</tspan></text>
+<text x="32" y="476" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;Enter&#160;stock&#160;symbol&#160;to&#160;sell:&#160;</tspan><tspan fill="#ffffff" class="term-text bold">AAPL</tspan></text>
+<text x="32" y="496" xml:space="preserve"><tspan fill="#89dceb" class="term-text">&#160;&#160;You&#160;own&#160;5&#160;share(s)&#160;of&#160;AAPL&#160;at&#160;$235.00&#160;each</tspan></text>
+<text x="32" y="516" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;Enter&#160;quantity&#160;to&#160;sell:&#160;</tspan><tspan fill="#ffffff" class="term-text bold">2</tspan></text>
+<text x="32" y="536" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="556" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;┌─────────────────────────────────┐</tspan></text>
+<text x="32" y="576" xml:space="preserve"><tspan fill="#f1c40f" class="term-text bold">&#160;&#160;│&#160;&#160;Sell&#160;Summary&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="596" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;Stock&#160;&#160;&#160;&#160;&#160;&#160;:&#160;AAPL&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="616" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;:&#160;2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="636" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;Sell&#160;Price&#160;:&#160;$235.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="656" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;You&#160;Receive:&#160;$470.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="676" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;│&#160;&#160;Est.&#160;P/L&#160;&#160;&#160;:&#160;</tspan><tspan fill="#2bf075" class="term-text bold">+$20.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">│</tspan></text>
+<text x="32" y="696" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;└─────────────────────────────────┘</tspan></text>
+<text x="32" y="716" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;Confirm&#160;sell?&#160;(y/n):&#160;</tspan><tspan fill="#ffffff" class="term-text bold">y</tspan></text>
+<text x="32" y="736" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="756" xml:space="preserve"><tspan fill="#2bf075" class="term-text bold">&#160;&#160;✔&#160;&#160;Sale&#160;successful!</tspan></text>
+<text x="32" y="776" xml:space="preserve"><tspan fill="#a6e3a1" class="term-text">&#160;&#160;&#160;&#160;&#160;Sold&#160;2&#160;share(s)&#160;of&#160;AAPL&#160;for&#160;$470.00</tspan></text>
+<text x="32" y="796" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;&#160;&#160;&#160;Realized&#160;P/L:&#160;</tspan><tspan fill="#2bf075" class="term-text bold">+$20.00</tspan></text>
+<text x="32" y="816" xml:space="preserve"><tspan fill="#f1c40f" class="term-text bold">&#160;&#160;&#160;&#160;&#160;New&#160;balance:&#160;$99,345.00</tspan></text>
+</svg>

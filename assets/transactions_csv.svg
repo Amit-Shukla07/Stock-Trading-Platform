@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 446" width="820" height="446">
+<defs>
+  <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#1e1e2e"/>
+    <stop offset="100%" stop-color="#181825"/>
+  </linearGradient>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.45"/>
+  </filter>
+</defs>
+<style>
+  .term-text { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13.5px; }
+  .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12.5px; fill: #a6adc8; font-weight: 500; }
+  .bold { font-weight: bold; }
+</style>
+<rect x="10" y="8" width="800" height="426" rx="10" ry="10" fill="url(#bgGrad)" stroke="#313244" stroke-width="1.2" filter="url(#shadow)"/>
+<rect x="10" y="8" width="800" height="42" rx="10" ry="10" fill="#181825"/>
+<rect x="10" y="40" width="800" height="10" fill="#181825"/>
+<line x1="10" y1="50" x2="810" y2="50" stroke="#313244" stroke-width="1"/>
+<circle cx="32" cy="28" r="6" fill="#ff5f56"/>
+<circle cx="52" cy="28" r="6" fill="#ffbd2e"/>
+<circle cx="72" cy="28" r="6" fill="#27c93f"/>
+<text x="410.0" y="32" text-anchor="middle" class="title">StockTradingPlatform — Transaction History &amp; CSV Export</text>
+<text x="32" y="76" xml:space="preserve"><tspan fill="#89dceb" class="term-text bold">&#160;&#160;┌──────────────────────────────────────────────────────────────────────────┐</tspan></text>
+<text x="32" y="96" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;│&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;📋&#160;&#160;TRANSACTION&#160;HISTORY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;│</tspan></text>
+<text x="32" y="116" xml:space="preserve"><tspan fill="#89dceb" class="term-text bold">&#160;&#160;└──────────────────────────────────────────────────────────────────────────┘</tspan></text>
+<text x="32" y="136" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;Type&#160;&#160;&#160;Stock&#160;&#160;&#160;Qty&#160;&#160;&#160;&#160;Price&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Total&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;P/L&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Date&#160;&amp;&#160;Time</tspan></text>
+<text x="32" y="156" xml:space="preserve"><tspan fill="#89dceb" class="term-text">&#160;&#160;────────────────────────────────────────────────────────────────────────────</tspan></text>
+<text x="32" y="176" xml:space="preserve"><tspan fill="#2bf075" class="term-text bold">&#160;&#160;BUY&#160;&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">AAPL&#160;&#160;&#160;&#160;5&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$225.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$1125.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">—&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#89dceb" class="term-text">04-11-2026&#160;01:51:24</tspan></text>
+<text x="32" y="196" xml:space="preserve"><tspan fill="#2bf075" class="term-text bold">&#160;&#160;BUY&#160;&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">MSFT&#160;&#160;&#160;&#160;2&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$500.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$500.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">—&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#89dceb" class="term-text">04-11-2026&#160;01:52:10</tspan></text>
+<text x="32" y="216" xml:space="preserve"><tspan fill="#ff5555" class="term-text bold">&#160;&#160;SELL&#160;&#160;&#160;</tspan><tspan fill="#cdd6f4" class="term-text">AAPL&#160;&#160;&#160;&#160;2&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$235.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#f9e2af" class="term-text">$470.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#2bf075" class="term-text bold">+$20.00&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#89dceb" class="term-text">04-11-2026&#160;01:53:45</tspan></text>
+<text x="32" y="236" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="256" xml:space="preserve"><tspan fill="#ffffff" class="term-text bold">&#160;&#160;Enter&#160;your&#160;choice:&#160;</tspan><tspan fill="#89dceb" class="term-text bold">10</tspan></text>
+<text x="32" y="276" xml:space="preserve"><tspan fill="#2bf075" class="term-text bold">&#160;&#160;✔&#160;&#160;Exported&#160;3&#160;transaction(s)&#160;to:</tspan></text>
+<text x="32" y="296" xml:space="preserve"><tspan fill="#89dceb" class="term-text bold">&#160;&#160;&#160;&#160;&#160;data/transactions_Amit&#160;Shukla_20261104_015400.csv</tspan></text>
+<text x="32" y="316" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text"></tspan></text>
+<text x="32" y="336" xml:space="preserve"><tspan fill="#6c7086" class="term-text">&#160;&#160;$&#160;cat&#160;data/transactions_Amit_Shukla_20261104_015400.csv</tspan></text>
+<text x="32" y="356" xml:space="preserve"><tspan fill="#f9e2af" class="term-text">&#160;&#160;Type,Stock,Quantity,Price,Total&#160;Amount,P/L,Date&#160;&amp;&#160;Time</tspan></text>
+<text x="32" y="376" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;BUY,AAPL,5,225.00,1125.00,0.00,04-11-2026&#160;01:51:24</tspan></text>
+<text x="32" y="396" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;BUY,MSFT,2,500.00,1000.00,0.00,04-11-2026&#160;01:52:10</tspan></text>
+<text x="32" y="416" xml:space="preserve"><tspan fill="#cdd6f4" class="term-text">&#160;&#160;SELL,AAPL,2,235.00,470.00,20.00,04-11-2026&#160;01:53:45</tspan></text>
+</svg>
