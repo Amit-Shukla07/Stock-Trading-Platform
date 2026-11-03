@@ -2,299 +2,186 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+/**
+ * Handles file-based persistence for user account, portfolio,
+ * and transaction data. Each user gets their own save files.
+ */
 public class DataManager {
 
     private static final String DATA_FOLDER = "data";
-    private static final String ACCOUNT_FILE =
-            DATA_FOLDER + File.separator + "account.txt";
 
-    private static final String PORTFOLIO_FILE =
-            DATA_FOLDER + File.separator + "portfolio.txt";
+    // Per-user file paths
+    private static String accountFile(String username) {
+        return DATA_FOLDER + File.separator + username + "_account.txt";
+    }
 
-    private static final String TRANSACTION_FILE =
-            DATA_FOLDER + File.separator + "transactions.txt";
+    private static String portfolioFile(String username) {
+        return DATA_FOLDER + File.separator + username + "_portfolio.txt";
+    }
+
+    private static String transactionFile(String username) {
+        return DATA_FOLDER + File.separator + username + "_transactions.txt";
+    }
+
+    // ── Initialization ───────────────────────────────────────
 
     public static void initializeDataFolder() {
-
         File folder = new File(DATA_FOLDER);
-
         if (!folder.exists()) {
             folder.mkdirs();
         }
     }
 
-    public static void saveData(
-            User user,
-            StockMarket market) {
+    // ── Load ─────────────────────────────────────────────────
+
+    /**
+     * Loads user data for the given username.
+     * Creates a fresh user with $100,000 if no save file exists.
+     */
+    public static User loadUser(String username) {
+
+        File file = new File(accountFile(username));
+
+        if (!file.exists()) {
+            System.out.println(Colors.YELLOW +
+                "  No saved data found. Starting fresh with $100,000.00" +
+                Colors.RESET);
+            return new User(username, 100000.00);
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
+            String savedUsername = reader.readLine();
+            double balance       = Double.parseDouble(reader.readLine());
+            double realizedPL    = Double.parseDouble(reader.readLine());
+
+            User user = new User(savedUsername, balance);
+            user.setRealizedProfitLoss(realizedPL);
+
+            loadPortfolio(user);
+            loadTransactions(user);
+
+            System.out.println(Colors.BOLD_GREEN +
+                "  ✔  Saved data loaded successfully." + Colors.RESET);
+            return user;
+
+        } catch (Exception e) {
+            System.out.println(Colors.RED +
+                "  ⚠  Could not load saved data. Starting fresh." + Colors.RESET);
+            return new User(username, 100000.00);
+        }
+    }
+
+    // ── Save ─────────────────────────────────────────────────
+
+    /** Saves all user data to per-user files. */
+    public static void saveData(User user, StockMarket market) {
 
         initializeDataFolder();
 
         saveAccount(user);
-
         savePortfolio(user);
-
         saveTransactions(user);
 
-        System.out.println(
-                "Application data saved successfully."
-        );
+        System.out.println(Colors.BOLD_GREEN +
+            "  ✔  All data saved successfully." + Colors.RESET);
     }
 
     private static void saveAccount(User user) {
-
-        try (
-                PrintWriter writer =
-                        new PrintWriter(
-                                new FileWriter(ACCOUNT_FILE)
-                        )
-        ) {
+        try (PrintWriter writer =
+                new PrintWriter(new FileWriter(accountFile(user.getUsername())))) {
 
             writer.println(user.getUsername());
             writer.println(user.getBalance());
             writer.println(user.getRealizedProfitLoss());
 
         } catch (IOException e) {
-
-            System.out.println(
-                    "Error saving account data: "
-                            + e.getMessage()
-            );
+            System.out.println(Colors.RED +
+                "  Error saving account: " + e.getMessage() + Colors.RESET);
         }
     }
 
     private static void savePortfolio(User user) {
+        try (PrintWriter writer =
+                new PrintWriter(new FileWriter(portfolioFile(user.getUsername())))) {
 
-        try (
-                PrintWriter writer =
-                        new PrintWriter(
-                                new FileWriter(PORTFOLIO_FILE)
-                        )
-        ) {
-
-            for (
-                    Map.Entry<String, Portfolio.Holding> entry
-                    : user.getPortfolio()
-                    .getHoldings()
-                    .entrySet()
-            ) {
+            for (Map.Entry<String, Portfolio.Holding> entry :
+                    user.getPortfolio().getHoldings().entrySet()) {
 
                 writer.println(
-                        entry.getKey()
-                                + ","
-                                + entry.getValue().getQuantity()
-                                + ","
-                                + entry.getValue().getAverageBuyPrice()
+                    entry.getKey() + "," +
+                    entry.getValue().getQuantity() + "," +
+                    entry.getValue().getAverageBuyPrice()
                 );
             }
-
         } catch (IOException e) {
-
-            System.out.println(
-                    "Error saving portfolio data: "
-                            + e.getMessage()
-            );
+            System.out.println(Colors.RED +
+                "  Error saving portfolio: " + e.getMessage() + Colors.RESET);
         }
     }
 
     private static void saveTransactions(User user) {
+        try (PrintWriter writer =
+                new PrintWriter(new FileWriter(transactionFile(user.getUsername())))) {
 
-        try (
-                PrintWriter writer =
-                        new PrintWriter(
-                                new FileWriter(TRANSACTION_FILE)
-                        )
-        ) {
-
-            for (
-                    Transaction transaction
-                    : user.getTransactions()
-            ) {
-
+            for (Transaction t : user.getTransactions()) {
                 writer.println(
-                        transaction.getType()
-                                + ","
-                                + transaction.getStockSymbol()
-                                + ","
-                                + transaction.getQuantity()
-                                + ","
-                                + transaction.getPrice()
-                                + ","
-                                + transaction.getProfitLoss()
-                                + ","
-                                + transaction.getDateTime()
+                    t.getType()        + "," +
+                    t.getStockSymbol() + "," +
+                    t.getQuantity()    + "," +
+                    t.getPrice()       + "," +
+                    t.getProfitLoss()  + "," +
+                    t.getDateTime()
                 );
             }
-
         } catch (IOException e) {
-
-            System.out.println(
-                    "Error saving transaction data: "
-                            + e.getMessage()
-            );
+            System.out.println(Colors.RED +
+                "  Error saving transactions: " + e.getMessage() + Colors.RESET);
         }
     }
 
-    public static User loadUser() {
-
-        File accountFile =
-                new File(ACCOUNT_FILE);
-
-        if (!accountFile.exists()) {
-
-            return new User(
-                    "Amit-Shukla07",
-                    100000.00
-            );
-        }
-
-        try (
-                BufferedReader reader =
-                        new BufferedReader(
-                                new FileReader(accountFile)
-                        )
-        ) {
-
-            String username = reader.readLine();
-
-            double balance =
-                    Double.parseDouble(
-                            reader.readLine()
-                    );
-
-            double realizedProfitLoss =
-                    Double.parseDouble(
-                            reader.readLine()
-                    );
-
-            User user =
-                    new User(
-                            username,
-                            balance
-                    );
-                    user.setRealizedProfitLoss(realizedProfitLoss);
-
-            loadPortfolio(user);
-            loadTransactions(user);
-
-            return user;
-
-        } catch (Exception e) {
-
-            System.out.println(
-                    "Saved data could not be loaded."
-            );
-
-            return new User(
-                    "Amit-Shukla07",
-                    100000.00
-            );
-        }
-    }
+    // ── Private loaders ──────────────────────────────────────
 
     private static void loadPortfolio(User user) {
+        File file = new File(portfolioFile(user.getUsername()));
+        if (!file.exists()) return;
 
-        File file =
-                new File(PORTFOLIO_FILE);
-
-        if (!file.exists()) {
-            return;
-        }
-
-        try (
-                BufferedReader reader =
-                        new BufferedReader(
-                                new FileReader(file)
-                        )
-        ) {
-
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-
             while ((line = reader.readLine()) != null) {
-
-                String[] data =
-                        line.split(",");
-
-                String symbol = data[0];
-
-                int quantity =
-                        Integer.parseInt(data[1]);
-
-                double averagePrice =
-                        Double.parseDouble(data[2]);
-
-                for (int i = 0; i < quantity; i++) {
-
-                    user.getPortfolio().buyStock(
-                            symbol,
-                            1,
-                            averagePrice
-                    );
-                }
+                String[] data    = line.split(",");
+                String   symbol  = data[0];
+                int      qty     = Integer.parseInt(data[1]);
+                double   avgPrice = Double.parseDouble(data[2]);
+                // Restore directly — no need to loop qty times
+                user.getPortfolio().buyStock(symbol, qty, avgPrice);
             }
-
         } catch (Exception e) {
-
-            System.out.println(
-                    "Error loading portfolio data."
-            );
+            System.out.println(Colors.RED + "  Error loading portfolio." + Colors.RESET);
         }
     }
 
     private static void loadTransactions(User user) {
+        File file = new File(transactionFile(user.getUsername()));
+        if (!file.exists()) return;
 
-        File file =
-                new File(TRANSACTION_FILE);
-
-        if (!file.exists()) {
-            return;
-        }
-
-        try (
-                BufferedReader reader =
-                        new BufferedReader(
-                                new FileReader(file)
-                        )
-        ) {
-
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-
             while ((line = reader.readLine()) != null) {
-
-                String[] data =
-                        line.split(",");
-
-                String type = data[0];
-                String symbol = data[1];
-
-                int quantity =
-                        Integer.parseInt(data[2]);
-
-                double price =
-                        Double.parseDouble(data[3]);
-
-                double profitLoss =
-                        Double.parseDouble(data[4]);
-
-                LocalDateTime dateTime =
-                        LocalDateTime.parse(data[5]);
+                String[]      data      = line.split(",");
+                String        type      = data[0];
+                String        symbol    = data[1];
+                int           qty       = Integer.parseInt(data[2]);
+                double        price     = Double.parseDouble(data[3]);
+                double        pl        = Double.parseDouble(data[4]);
+                LocalDateTime dateTime  = LocalDateTime.parse(data[5]);
 
                 user.getTransactions().add(
-                        new Transaction(
-                                type,
-                                symbol,
-                                quantity,
-                                price,
-                                profitLoss,
-                                dateTime
-                        )
+                    new Transaction(type, symbol, qty, price, pl, dateTime)
                 );
             }
-
         } catch (Exception e) {
-
-            System.out.println(
-                    "Error loading transaction data."
-            );
+            System.out.println(Colors.RED + "  Error loading transactions." + Colors.RESET);
         }
     }
 }

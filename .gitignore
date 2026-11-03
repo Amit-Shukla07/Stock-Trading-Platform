@@ -2,4 +2,7 @@
 .vscode/
 .idea/
 *.iml
+
+# User save data (keep folder, ignore personal data files)
 data/*.txt
+data/*.csv

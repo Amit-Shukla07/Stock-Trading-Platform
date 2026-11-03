@@ -1,191 +1,136 @@
 import java.util.ArrayList;
 
+/**
+ * Represents a registered user with a cash balance,
+ * stock portfolio, and transaction history.
+ */
 public class User {
 
-    private String username;
-    private double balance;
-    private Portfolio portfolio;
+    private String                username;
+    private double                balance;
+    private Portfolio             portfolio;
     private ArrayList<Transaction> transactions;
-    private double realizedProfitLoss;
+    private double                realizedProfitLoss;
 
     public User(String username, double balance) {
-
-        this.username = username;
-        this.balance = balance;
-
-        portfolio = new Portfolio();
-        transactions = new ArrayList<>();
-
-        realizedProfitLoss = 0;
+        this.username           = username;
+        this.balance            = balance;
+        this.portfolio          = new Portfolio();
+        this.transactions       = new ArrayList<>();
+        this.realizedProfitLoss = 0;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    // ── Getters / Setters ────────────────────────────────────
 
-    public double getBalance() {
-        return balance;
-    }
+    public String                 getUsername()           { return username; }
+    public double                 getBalance()            { return balance; }
+    public Portfolio              getPortfolio()          { return portfolio; }
+    public ArrayList<Transaction> getTransactions()       { return transactions; }
+    public double                 getRealizedProfitLoss() { return realizedProfitLoss; }
 
-    public Portfolio getPortfolio() {
-        return portfolio;
-    }
+    public void setRealizedProfitLoss(double v) { this.realizedProfitLoss = v; }
 
-    public ArrayList<Transaction> getTransactions() {
-        return transactions;
-    }
+    // ── Trade operations ─────────────────────────────────────
 
-    public double getRealizedProfitLoss() {
-        return realizedProfitLoss;
-    }
-
+    /**
+     * Buys the given quantity of stock if funds are sufficient.
+     * Returns true on success, false on validation failure.
+     */
     public boolean buyStock(Stock stock, int quantity) {
 
-        if (quantity <= 0) {
-            return false;
-        }
+        if (quantity <= 0)                        return false;
 
         double totalCost = stock.getPrice() * quantity;
-
-        if (totalCost > balance) {
-            return false;
-        }
+        if (totalCost > balance)                  return false;
 
         balance -= totalCost;
 
-        portfolio.buyStock(
-                stock.getSymbol(),
-                quantity,
-                stock.getPrice()
-        );
+        portfolio.buyStock(stock.getSymbol(), quantity, stock.getPrice());
 
-        Transaction transaction = new Transaction(
-                "BUY",
-                stock.getSymbol(),
-                quantity,
-                stock.getPrice(),
-                0
-        );
-
-        transactions.add(transaction);
+        transactions.add(new Transaction(
+            "BUY", stock.getSymbol(), quantity, stock.getPrice(), 0
+        ));
 
         return true;
     }
 
-    public double calculateSellProfit(
-            Stock stock,
-            int quantity) {
-
-        double averagePrice =
-                portfolio.getAverageBuyPrice(
-                        stock.getSymbol()
-                );
-
-        return (stock.getPrice() - averagePrice) * quantity;
-    }
-
+    /**
+     * Sells the given quantity of stock if the user owns enough shares.
+     * Returns true on success.
+     */
     public boolean sellStock(Stock stock, int quantity) {
 
-        if (quantity <= 0) {
-            return false;
-        }
+        if (quantity <= 0)                                         return false;
+        if (!portfolio.ownsStock(stock.getSymbol()))               return false;
+        if (portfolio.getQuantity(stock.getSymbol()) < quantity)   return false;
 
-        if (!portfolio.ownsStock(stock.getSymbol())) {
-            return false;
-        }
+        double totalReceived = stock.getPrice() * quantity;
+        double profitLoss    = calculateSellProfit(stock, quantity);
 
-        if (portfolio.getQuantity(stock.getSymbol()) < quantity) {
-            return false;
-        }
+        portfolio.sellStock(stock.getSymbol(), quantity);
 
-        double totalReceived =
-                stock.getPrice() * quantity;
-
-        double profitLoss =
-                calculateSellProfit(stock, quantity);
-
-        portfolio.sellStock(
-                stock.getSymbol(),
-                quantity
-        );
-
-        balance += totalReceived;
-
+        balance            += totalReceived;
         realizedProfitLoss += profitLoss;
 
-        Transaction transaction = new Transaction(
-                "SELL",
-                stock.getSymbol(),
-                quantity,
-                stock.getPrice(),
-                profitLoss
-        );
-
-        transactions.add(transaction);
+        transactions.add(new Transaction(
+            "SELL", stock.getSymbol(), quantity, stock.getPrice(), profitLoss
+        ));
 
         return true;
     }
 
-    public void displayBalance() {
-
-        System.out.println("\n========================================");
-        System.out.println("             ACCOUNT BALANCE");
-        System.out.println("========================================");
-
-        System.out.printf(
-                "Available Cash : $%.2f%n",
-                balance
-        );
-
-        System.out.printf(
-                "Realized P/L   : $%.2f%n",
-                realizedProfitLoss
-        );
+    /** Calculates P/L for a potential sell based on average buy price. */
+    public double calculateSellProfit(Stock stock, int quantity) {
+        double avgPrice = portfolio.getAverageBuyPrice(stock.getSymbol());
+        return (stock.getPrice() - avgPrice) * quantity;
     }
 
+    // ── Display ──────────────────────────────────────────────
+
+    /** Prints colorful account balance summary. */
+    public void displayBalance() {
+        System.out.println("\n" + Colors.BOLD_CYAN + "  ┌" + "─".repeat(38) + "┐" + Colors.RESET);
+        System.out.println(Colors.BOLD_CYAN + "  │" + Colors.RESET +
+            Colors.BOLD_WHITE + centerPad("💵  ACCOUNT BALANCE", 38) + Colors.RESET +
+            Colors.BOLD_CYAN + "│" + Colors.RESET);
+        System.out.println(Colors.BOLD_CYAN + "  └" + "─".repeat(38) + "┘" + Colors.RESET);
+
+        System.out.printf("  %-22s " + Colors.BOLD_YELLOW + "$%.2f%n" + Colors.RESET,
+            "Available Cash:", balance);
+        System.out.printf("  %-22s %s%n",
+            "Realized P/L:", Colors.colorPL(realizedProfitLoss));
+    }
+
+    /** Prints colored transaction history table. */
     public void displayTransactions() {
 
         if (transactions.isEmpty()) {
-
-            System.out.println(
-                    "\nNo transactions found."
-            );
-
+            System.out.println(Colors.YELLOW +
+                "\n  No transactions yet. Start trading!" + Colors.RESET);
             return;
         }
 
-        System.out.println(
-                "\n================================================================================"
-        );
+        String divider = "─".repeat(76);
+        System.out.println("\n" + Colors.BOLD_CYAN + "  ┌" + "─".repeat(74) + "┐" + Colors.RESET);
+        System.out.println(Colors.BOLD_CYAN + "  │" + Colors.RESET +
+            Colors.BOLD_WHITE + centerPad("📋  TRANSACTION HISTORY", 74) + Colors.RESET +
+            Colors.BOLD_CYAN + "│" + Colors.RESET);
+        System.out.println(Colors.BOLD_CYAN + "  └" + "─".repeat(74) + "┘" + Colors.RESET);
 
-        System.out.println(
-                "                         TRANSACTION HISTORY"
-        );
+        System.out.printf(Colors.BOLD_WHITE +
+            "  %-5s  %-6s  %-5s  %-12s  %-14s  %-12s  %s%n" + Colors.RESET,
+            "Type", "Stock", "Qty", "Price", "Total", "P/L", "Date & Time");
+        System.out.println(Colors.CYAN + "  " + divider + Colors.RESET);
 
-        System.out.println(
-                "================================================================================"
-        );
-
-        System.out.printf(
-                "%-6s %-8s %-8s %-11s %-13s %-13s %s%n",
-                "Type",
-                "Stock",
-                "Qty",
-                "Price",
-                "Total",
-                "P/L",
-                "Date & Time"
-        );
-
-        System.out.println(
-                "--------------------------------------------------------------------------------"
-        );
-
-        for (Transaction transaction : transactions) {
-            transaction.displayTransaction();
+        for (Transaction t : transactions) {
+            t.displayTransaction();
         }
     }
-    public void setRealizedProfitLoss(double realizedProfitLoss) {
-    this.realizedProfitLoss = realizedProfitLoss;
-}
+
+    // ── Utility ──────────────────────────────────────────────
+
+    private static String centerPad(String text, int width) {
+        int pad = (width - text.length()) / 2;
+        return " ".repeat(Math.max(0, pad)) + text;
+    }
 }
